@@ -17,3 +17,5 @@ to disable script:<br>
   `make stop`
   
  ## Setting configuration
+ 
+ ## Example of program execution
