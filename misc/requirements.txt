@@ -1,0 +1,6 @@
+pathlib==1.0.1
+vk_api==11.9.7
+logging==0.4.9.6
+pybase64==1.2.1
+python-crontab==2.6.0
+black==22.3.0
