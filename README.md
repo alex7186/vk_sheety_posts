@@ -7,15 +7,25 @@ it sends messages in 8.30am to all selected followers three times per week (wedn
 
 ## Setup
 Install the requremets and configure the CRON table: <br>
-  `cd <path_to_file>` <br>
+  `cd <PATH_TO_PROJET_DIR>` <br>
   `make setup`
 
 to test the script in action enter:<br>
   `make start`
-  
+
 to disable script:<br>
   `make stop`
-  
- ## Setting configuration
  
- ## Example of program execution
+## Setting configuration
+  to make the bot work properly replace the following lines in `config.json` file:<br>
+  * peers_id : [<br>
+        `<YOUR SUBSCRIBER CHAT ID #1>` ,<br>
+        `<YOUR SUBSCRIBER CHAT ID #2>` ,<br>
+        `...`<br>
+  ]
+
+  
+  to insert telegram bot key:
+  * make file `token.txt` and put your bot token into this file
+
+## Example of program execution
