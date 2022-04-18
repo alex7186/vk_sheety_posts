@@ -5,7 +5,7 @@ push:
 	python -m black .
 	git add .
 	git commit -m "autocommit $(today)"
-	git push origin master
+	git push origin main
 	
 setup:
 	cd ~/scripts/vk_sheety_posts
