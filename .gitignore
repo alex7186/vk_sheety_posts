@@ -1,4 +1,5 @@
 .ipynb_checkpoints
 __pycache__
 temp
-*.txt
+vk_key.txt
+logfile.txt
