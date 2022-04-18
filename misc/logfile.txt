@@ -150,3 +150,8 @@
 08:30:03,111 root INFO Message 'Это уже 30 сообщение' sent to 2000000064 with id 994095
 08:30:03,583 urllib3.connectionpool DEBUG https://api.vk.com:443 "POST /method/messages.send HTTP/1.1" 200 39
 08:30:03,584 root INFO Message 'Это уже 30 сообщение' sent to 2000000059 with id 994096
+06:22:24,636 root INFO Message 'Это уже 31 сообщение' sent to 261253602 with id 1000185
+06:22:25,78 root INFO Message 'Это уже 31 сообщение' sent to 196198495 with id 1000186
+06:22:25,527 root INFO Message 'Это уже 31 сообщение' sent to 391513740 with id 1000187
+06:22:25,948 root INFO Message 'Это уже 31 сообщение' sent to 2000000064 with id 1000188
+06:22:26,432 root INFO Message 'Это уже 31 сообщение' sent to 2000000059 with id 1000189

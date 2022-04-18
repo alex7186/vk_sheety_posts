@@ -14,7 +14,7 @@ setup:
 	
 start:
 	cd ~/scripts/vk_sheety_posts
-	echo 'None'
+	python3 ./app.py
 
 stop:
 	cd ~/scripts/vk_sheety_posts

@@ -1,9 +1,10 @@
 import json
 from vk_api import VkApi
 import logging
-import sys
+import os
 
-SCRIPT_PATH = list(sys.argv)[1]
+SCRIPT_PATH = "/".join(os.path.realpath(__file__).split("/")[:-1])
+print(SCRIPT_PATH)
 posts_collection = []
 
 
@@ -12,7 +13,7 @@ logging.basicConfig(
     filemode="a",
     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
     datefmt="%H:%M:%S",
-    level=logging.DEBUG,
+    level=logging.INFO,
 )
 
 
@@ -29,9 +30,12 @@ def _set_config(config):
         f.write(json.dumps(config, indent=4))
 
 
-def get_next():
-    global current_config
-    current_config = _get_config()
+def _get_vk_key(SCRIPT_PATH):
+    with open(f"{SCRIPT_PATH}/vk_key.txt", "r") as f:
+        return f.read()
+
+
+def set_next_number(current_config):
     current_number = current_config["current_number"]
     current_config["current_number"] = current_number + 1
     _set_config(current_config)
@@ -39,36 +43,35 @@ def get_next():
     return current_number
 
 
-def _load_post_collection():
-    global SCRIPT_PATH
+def _load_post_collection(SCRIPT_PATH):
     with open(f"{SCRIPT_PATH}/misc/sheety.dump", "r") as f:
         return json.loads(f.read())
 
 
-def get_post_by_number(number):
+def get_post_by_number(number, SCRIPT_PATH):
     """
     as count of posts may be less than input number
     the post id will be % with count of posts
     """
 
-    posts_collection = _load_post_collection()
+    posts_collection = _load_post_collection(SCRIPT_PATH)
 
     return posts_collection[number % len(posts_collection)]
 
 
-def get_sheety_content():
-    current_number = get_next()
+def get_sheety_content(SCRIPT_PATH, current_config):
+    current_number = set_next_number(current_config=current_config)
     sheety_title = f"Это уже {current_number} сообщение из моей специальной подборки для особого случая. Сгенерировано нейросетями.\n\n"
 
-    return sheety_title + get_post_by_number(current_number)
+    return sheety_title + get_post_by_number(
+        number=current_number, SCRIPT_PATH=SCRIPT_PATH
+    )
 
 
-def send_sheety_content():
-    global current_config
+def send_sheety_content(current_config, SCRIPT_PATH):
+    message = get_sheety_content(SCRIPT_PATH=SCRIPT_PATH, current_config=current_config)
 
-    message = get_sheety_content()
-
-    vk_session = VkApi(token=current_config["vk_api_249274091"])
+    vk_session = VkApi(token=_get_vk_key(SCRIPT_PATH))
     session_api = vk_session.get_api()
 
     for peer_id in current_config["peers_id"]:
@@ -77,4 +80,5 @@ def send_sheety_content():
         logging.info(f"Message '{message[:20]}' sent to {peer_id} with id {res}")
 
 
-send_sheety_content()
+current_config = _get_config()
+send_sheety_content(current_config=current_config, SCRIPT_PATH=SCRIPT_PATH)

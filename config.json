@@ -1,13 +1,11 @@
 {
-    "current_number": 31,
-    "vk_api_249274091": "3bfe73a46f44da4f64d161c3dd5fdaa3b23c56f98d3abc243cb136926e46dff7520daaa37fb114425a6b0",
+    "APP_NAME": "vk_sheety_posts",
+    "current_number": 32,
     "peers_id": [
         261253602,
         196198495,
         391513740,
         2000000064,
         2000000059
-    ],
-    "APP_NAME": "vk_sheety_posts",
-    "SCRIPT_PATH": "/home/pi/shared/scripts/vk_sheety_posts"
+    ]    
 }
