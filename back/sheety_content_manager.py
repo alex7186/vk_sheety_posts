@@ -3,7 +3,7 @@ from vk_api import VkApi
 import logging
 
 from back.config_manager import _set_config
-from back.token_manager import _get_vk_key
+from back.token_manager import get_token
 
 
 def set_next_number(current_config):
@@ -42,7 +42,7 @@ def get_sheety_content(SCRIPT_PATH, current_config):
 def send_sheety_content(current_config, SCRIPT_PATH):
     message = get_sheety_content(SCRIPT_PATH=SCRIPT_PATH, current_config=current_config)
 
-    vk_session = VkApi(token=_get_vk_key(SCRIPT_PATH))
+    vk_session = VkApi(token=get_token(SCRIPT_PATH))
     session_api = vk_session.get_api()
 
     for peer_id in current_config["peers_id"]:
