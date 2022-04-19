@@ -1,10 +1,6 @@
 today =`date '+%Y-%m-%d  %H:%M:%S'`
 commit_name = "autocommit $(today)"
 
-update:
-	@cd ~/scripts/vk_sheety_posts
-	@python3 remake_posts_dump.py
-
 push:
 	@cd ~/scripts/vk_sheety_posts
 	@python -m black .
@@ -25,3 +21,7 @@ start:
 stop:
 	@cd ~/scripts/vk_sheety_posts
 	@python3 back/crontab_manager.py stop
+
+update:
+	@cd ~/scripts/vk_sheety_posts
+	@python3 remake_posts_dump.py
