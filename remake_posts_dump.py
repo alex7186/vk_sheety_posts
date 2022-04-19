@@ -8,4 +8,4 @@ output_filename = "./misc/time_dump.dump"
 
 download_posts(token=get_token(SCRIPT_PATH), filename=output_filename)
 
-print(f"created file in {output_filename}")
+print(f"created dump file in {output_filename}")
