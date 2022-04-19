@@ -1,5 +1,9 @@
 today =`date '+%Y-%m-%d  %H:%M:%S'`
 
+update:
+	cd ~/scripts/vk_sheety_posts
+	python3 remake_posts_dump.py
+
 push:
 	cd ~/scripts/vk_sheety_posts
 	python -m black .
@@ -10,12 +14,12 @@ push:
 setup:
 	cd ~/scripts/vk_sheety_posts
 	pip3 install -r ./misc/requirements.txt
-	python3 ./crontab_manager.py start
+	python3 back/crontab_manager.py start
 	
 start:
 	cd ~/scripts/vk_sheety_posts
-	python3 ./app.py
+	python3 app.py
 
 stop:
 	cd ~/scripts/vk_sheety_posts
-	python3 ./crontab_manager.py stop
+	python3 back/crontab_manager.py stop
