@@ -2,14 +2,14 @@ import json
 from vk_api import VkApi
 import logging
 
-from back.config_manager import _set_config
+from back.config_manager import set_config
 from back.token_manager import get_token
 
 
-def set_next_number(current_config):
+def set_next_number(current_config, SCRIPT_PATH):
     current_number = current_config["current_number"]
     current_config["current_number"] = current_number + 1
-    _set_config(current_config)
+    set_config(config=current_config, SCRIPT_PATH=SCRIPT_PATH)
 
     return current_number
 
@@ -31,7 +31,10 @@ def get_post_by_number(number, SCRIPT_PATH):
 
 
 def get_sheety_content(SCRIPT_PATH, current_config):
-    current_number = set_next_number(current_config=current_config)
+    current_number = set_next_number(
+        current_config=current_config,
+        SCRIPT_PATH=SCRIPT_PATH,
+    )
     sheety_title = f"Это уже {current_number} сообщение из моей специальной подборки для особого случая. Сгенерировано нейросетями.\n\n"
 
     return sheety_title + get_post_by_number(
