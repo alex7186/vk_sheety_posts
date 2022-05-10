@@ -1,7 +1,7 @@
 {
     "APP_NAME": "vk_sheety_posts",
     "CRONTAB_SETUP": "30 8 * * 3-5",
-    "current_number": 33,
+    "current_number": 38,
     "peers_id": [
         261253602,
         196198495,
